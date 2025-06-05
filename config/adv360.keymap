@@ -21,17 +21,54 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        Raycast {
+            bindings = <&mt LEFT_COMMAND SPACE>;
+            key-positions = <36 70>;
+        };
+
+        Toggle_Apps {
+            bindings = <&mt LEFT_COMMAND TAB>;
+            key-positions = <36 28>;
+        };
+    };
+
+    macros {
+        Screenshot: Screenshot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mt LEFT_COMMAND LS(N5)>;
+            label = "SCREENSHOT";
+        };
+
+        Raycast: Raycast {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&Raycast>;
+            label = "RAYCAST";
+        };
+
+        ToggleApps: ToggleApps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&ToggleApps>;
+            label = "TOGGLEAPPS";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "Base";
             bindings = <
-&kp GRAVE  &kp N1    &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                               &mo 3             &kp N6  &kp N7          &kp N8        &kp N9    &kp N0     &kp MINUS
-&kp ESC    &kp Q     &kp W     &kp E     &kp R      &kp T   &none                                                                &none             &kp Y   &kp U           &kp I         &kp O     &kp P      &kp BSLH
-&kp TAB    &kp A     &kp S     &kp D     &kp F      &kp G   &none     &kp LCTRL  &kp LG(LEFT_COMMAND)      &kp LGUI   &kp RCTRL  &kp LEFT_BRACKET  &kp H   &kp J           &kp K         &kp L     &kp SEMI   &kp SQT
-&kp LSHFT  &kp Z     &kp X     &kp C     &kp V      &kp B                        &kp LEFT_ALT              &kp PG_UP                               &kp N   &kp M           &kp COMMA     &kp DOT   &kp FSLH   &kp RSHFT
-&mo 2      &kp CAPS  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BSPC  &kp DEL    &kp END                   &kp PG_DN  &kp ENTER  &kp SPACE                 &kp LEFT_ARROW  &kp UP_ARROW  &kp DOWN  &kp RIGHT  &kp RIGHT_BRACKET
+&kp GRAVE  &kp N1    &kp N2     &kp N3                       &kp N4                        &kp N5  &tog 1                                                                  &mo 3             &kp N6  &kp N7             &kp N8          &kp N9        &kp N0          &kp MINUS
+&kp ESC    &kp Q     &kp W      &kp E                        &kp R                         &kp T   &Raycast                                                                &Screenshot       &kp Y   &kp U              &kp I           &kp O         &kp P           &kp BSLH
+&kp TAB    &kp A     &kp S      &kp D                        &kp F                         &kp G   &ToggleApps  &kp LCTRL  &kp LG(LEFT_COMMAND)      &kp LGUI   &kp RCTRL  &kp LEFT_BRACKET  &kp H   &kp J              &kp K           &kp L         &kp SEMI        &kp SQT
+&kp LSHFT  &kp Z     &kp X      &kp C                        &kp V                         &kp B                           &kp LEFT_ALT              &kp PG_UP                               &kp N   &kp M              &kp COMMA       &kp DOT       &kp FSLH        &kp RSHFT
+&mo 2      &kp CAPS  &kp EQUAL  &mt LEFT_CONTROL LEFT_ARROW  &mt LEFT_CONTROL RIGHT_ARROW          &kp BSPC     &kp DEL    &kp HOME                  &kp PG_DN  &kp ENTER  &kp SPACE                 &kp RIGHT_BRACKET  &kp LEFT_ARROW  &kp UP_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
         };
 
